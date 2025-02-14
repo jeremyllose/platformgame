@@ -87,9 +87,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (groundCheck != null)
         {
-            Debug.Log($"Ground Check Position: {groundCheck.position}");
+          
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
-            Debug.Log($"Ground Check at {groundCheck.position}, Result: {isGrounded}");
+           
         }
         else
         {
