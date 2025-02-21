@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfe59acb5d5ed64baae651d938272af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: SampleScene
+  gameSceneName: Level1
   mainMenuPanel: {fileID: 1944728068}
   aboutPanel: {fileID: 782857758}
 --- !u!1 &517388209

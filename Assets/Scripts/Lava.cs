@@ -1,19 +1,26 @@
 using UnityEngine;
 
 public class Lava : MonoBehaviour
-{
     // When the player collides with the lava
-    private void OnCollisionEnter2D(Collision2D collision)
+ {
+    public GameObject losePanel; // Reference to the Lose Panel
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the object that collided is the player
-        if (collision.gameObject.CompareTag("Ventus") || collision.gameObject.CompareTag("Petra"))
+        if (other.CompareTag("Ventus") || other.CompareTag("Petra")) // Check if the character touches lava
         {
-            // Kill the player (for example, by triggering respawn or reducing health)
-            Health Health = collision.gameObject.GetComponent<Health>();
-            if (Health != null)
-            {
-                Health.TakeDamage(9999); // Or whatever damage value you want
-            }
+            Debug.Log(other.name + " has touched the lava!");
+            KillPlayer(other.gameObject); // "Kill" the player
         }
+    }
+
+    private void KillPlayer(GameObject player)
+    {
+        // Disable the player or trigger any death animation here
+        player.SetActive(false); // Deactivate the character to simulate death
+
+        // Show the lose panel
+        losePanel.SetActive(true);
+        Debug.Log("Lose panel activated!");
     }
 }
