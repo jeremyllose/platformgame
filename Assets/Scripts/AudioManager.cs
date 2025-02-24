@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
         {
             PlayMainMenuMusic();
         }
-        else if (SceneManager.GetActiveScene().name == "SampleScene" || SceneManager.GetActiveScene().name == "Scenes/SampleScene")
+        else if (SceneManager.GetActiveScene().name == "Level1" || SceneManager.GetActiveScene().name == "Scenes/Level1")
         {
             PlayGameMusic();
         }

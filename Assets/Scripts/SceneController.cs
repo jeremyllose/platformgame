@@ -78,9 +78,9 @@ public class SceneController : MonoBehaviour
             isGameFrozen = true; // Freeze game when in MainMenu
             FreezeGameplay();
         }
-        else if (SceneManager.GetActiveScene().name == "SampleScene")
+        else if (SceneManager.GetActiveScene().name == "Level1")
         {
-            isGameFrozen = false; // Unfreeze game when in SampleScene
+            isGameFrozen = false; // Unfreeze game when in Level1
             UnfreezeGameplay();
         }
     }

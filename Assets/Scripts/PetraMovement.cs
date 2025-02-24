@@ -1,86 +1,35 @@
 using UnityEngine;
-
 public class PetraMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private bool isGrounded;
-    private int jumpCount = 0;
-    private int maxJumps = 1; 
-
-    [Header("Movement Settings")]
     public float speed = 5f;
-    public float jumpForce = 14f;
-    public float stompForce = 20f;
+    public float jumpForce = 20f;
+    private bool isGrounded;
+    private Rigidbody2D rb;
 
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    void Update()
     {
-        HandleMovement();
-        HandleJump();
-        HandleStomp();
-    }
+        // Movement
+        float move = Input.GetAxis("HorizontalPetra");
+        rb.linearVelocity = new Vector2(move * speed, rb.linearVelocity.y);
 
-    private void HandleMovement()
-    {
-        float moveX = 0;
-        if (Input.GetKey(KeyCode.RightArrow)) moveX = 1;
-        if (Input.GetKey(KeyCode.LeftArrow)) moveX = -1;
-
-        rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
-    }
-
-    private void HandleJump()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
-            jumpCount++;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            Debug.Log("Petra Jump!");
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            isGrounded = false;
         }
     }
 
-    private void HandleStomp()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isGrounded && Input.GetKeyDown(KeyCode.DownArrow))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, -stompForce);
-            Debug.Log("Petra performed a Heavy Stomp!");
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        CheckGrounded();
-    }
-
-    private void CheckGrounded()
-    {
-        bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
-
-        if (isGrounded && !wasGrounded) 
-        {
-            jumpCount = 0;
-            Debug.Log("✅ Petra landed! Jump reset.");
-        }
-
-        if (!isGrounded && wasGrounded) Debug.Log("❌ Petra is airborne!");
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, 0.3f);
+            isGrounded = true; // Reset jump when touching the ground
         }
     }
 }

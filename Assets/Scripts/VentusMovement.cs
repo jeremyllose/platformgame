@@ -2,81 +2,52 @@ using UnityEngine;
 
 public class VentusMovement : MonoBehaviour
 {
+    public float speed = 5f;
+    public float jumpForce = 20f;
+    public float slowFallMultiplier = 0.1f;
+    private int jumpCount;
     private Rigidbody2D rb;
     private bool isGrounded;
-    private int jumpCount = 0;
-    private int maxJumps = 2; 
 
-    [Header("Movement Settings")]
-    public float speed = 5f;
-    public float jumpForce = 14f;
-    public float slowFallMultiplier = 0.5f;
-
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    void Update()
     {
-        HandleMovement();
-        HandleJump();
-    }
+        // Movement
+        float move = Input.GetAxis("HorizontalVentus");
+        rb.linearVelocity = new Vector2(move * speed, rb.linearVelocity.y);
 
-    private void HandleMovement()
-    {
-        float moveX = 0;
-        if (Input.GetKey(KeyCode.D)) moveX = 1;
-        if (Input.GetKey(KeyCode.A)) moveX = -1;
-
-        rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
-    }
-
-    private void HandleJump()
-    {
-        if (Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps)
+        // Jumping
+        if (Input.GetKeyDown(KeyCode.W) && (isGrounded || jumpCount > 0))
         {
-            jumpCount++;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            Debug.Log($"Ventus Jump {jumpCount}!");
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            jumpCount--;
+        }
+
+        // Apply slow fall if falling down
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (slowFallMultiplier - 1) * Time.deltaTime;
         }
     }
 
-    private void FixedUpdate()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        CheckGrounded(); // ✅ Ground detection now in FixedUpdate
-
-        // Apply slow fall effect
-        if (rb.velocity.y < 0)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * slowFallMultiplier * Time.fixedDeltaTime;
+            isGrounded = true;
+            jumpCount = 2; // Reset jumps when touching the ground
         }
     }
 
-    private void CheckGrounded()
+    void OnCollisionExit2D(Collision2D collision)
     {
-        bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
-
-        if (isGrounded && !wasGrounded) 
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            jumpCount = 0;
-            Debug.Log("✅ Ventus landed! Jump reset.");
-        }
-
-        if (!isGrounded && wasGrounded) Debug.Log("❌ Ventus is airborne!");
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(groundCheck.position, 0.3f);
+            isGrounded = false;
         }
     }
 }
