@@ -5,7 +5,6 @@ public class SceneController : MonoBehaviour
 {
     public GameObject player; // Reference to the player GameObject
     public GameObject[] enemies; // Reference to all enemy GameObjects (can be empty if no enemies)
-    public GameObject pausePanel; // Reference to the PausePanel GameObject
 
     private bool isGameFrozen = true; // Tracks whether the game is frozen or not
     private bool isInMainMenu = false; // Tracks if the current scene is the MainMenu
@@ -46,21 +45,6 @@ public class SceneController : MonoBehaviour
             else
             {
                 UnfreezeGameplay();
-            }
-        }
-
-        // Check if the PausePanel is active (game is paused)
-        if (pausePanel.activeSelf)
-        {
-            isGamePaused = true;
-            FreezeGameplay(); // Freeze gameplay when PausePanel is active
-        }
-        else
-        {
-            isGamePaused = false;
-            if (!isInMainMenu && !isGameOver)
-            {
-                UnfreezeGameplay(); // Unfreeze gameplay if not paused and not in main menu
             }
         }
     }
@@ -138,23 +122,5 @@ public class SceneController : MonoBehaviour
     {
         isGameOver = true; // Game over state is true
         Debug.Log(isWin ? "You Win!" : "You Lose!");
-    }
-
-    // Example method to pause the game
-    public void PauseGame()
-    {
-        if (!isGamePaused)
-        {
-            pausePanel.SetActive(true); // Show the PausePanel
-        }
-    }
-
-    // Example method to resume the game
-    public void ResumeGame()
-    {
-        if (isGamePaused)
-        {
-            pausePanel.SetActive(false); // Hide the PausePanel
-        }
     }
 }

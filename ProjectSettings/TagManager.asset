@@ -9,6 +9,7 @@ TagManager:
   - Ventus
   - Petra
   - Ground
+  - PausePanel
   layers:
   - Default
   - TransparentFX
