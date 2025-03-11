@@ -2,17 +2,30 @@ using UnityEngine;
 
 public class ShowPause : MonoBehaviour
 {
+    public static ShowPause Instance { get; private set; } // Singleton instance
+
     [SerializeField] private GameObject pausePanel; // Pause panel UI
     private bool isPaused = false; // Tracks the current pause state
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Remove duplicates
+        }
+    }
+
     void Update()
     {
-        // Check if the Escape key is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Log when the ESC key is pressed
             Debug.LogWarning("ESC key pressed");
 
-            // Check if game is already paused
             if (isPaused)
             {
                 Debug.LogWarning("Game is paused, trying to unpause");
@@ -22,14 +35,12 @@ public class ShowPause : MonoBehaviour
                 Debug.LogWarning("Game is not paused, trying to pause");
             }
 
-            // Toggle the pause state when ESC is pressed
             TogglePause();
         }
     }
 
     public void TogglePause()
     {
-        // Toggle pause state and show/hide the pause panel accordingly
         if (isPaused)
         {
             UnpauseGame();
@@ -42,27 +53,19 @@ public class ShowPause : MonoBehaviour
 
     private void PauseGame()
     {
-        // Show the pause panel
         if (pausePanel != null)
             pausePanel.SetActive(true);
 
-        // Pause the game
-        Time.timeScale = 0f; // Freezes the game
-
-        // Set the pause state to true
+        Time.timeScale = 0f;
         isPaused = true;
     }
 
     private void UnpauseGame()
     {
-        // Hide the pause panel
         if (pausePanel != null)
             pausePanel.SetActive(false);
 
-        // Unpause the game
-        Time.timeScale = 1f; // Resumes the game
-
-        // Set the pause state to false
+        Time.timeScale = 1f;
         isPaused = false;
     }
 }
