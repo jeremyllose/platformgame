@@ -40,11 +40,6 @@ public class VentusMovement : MonoBehaviour
         {
             isGrounded = true;
             jumpCount = 2; // Reset jumps when touching the ground
-                           // Check if colliding from the side (wall)
-            if (collision.contacts[0].normal.x != 0)
-            {
-                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            }
         }
     }
 

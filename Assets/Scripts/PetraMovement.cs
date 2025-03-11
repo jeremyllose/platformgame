@@ -30,11 +30,6 @@ public class PetraMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true; // Reset jump when touching the ground
-                               // Prevent sticking to walls
-            if (collision.contacts[0].normal.x != 0)
-            {
-                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            }
         }
     }
 }
