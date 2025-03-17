@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class ShowPause : MonoBehaviour
 {
-<<<<<<< HEAD
     public static ShowPause Instance { get; private set; } // Singleton instance
 
     [SerializeField] private GameObject pausePanel; // Assigned in Inspector
@@ -25,32 +24,10 @@ public class ShowPause : MonoBehaviour
     }
 
     private void Update()
-=======
-    [SerializeField] private GameObject pausePanel; // Pause panel UI
-    private bool isPaused = false; // Tracks the current pause state
-    void Update()
->>>>>>> parent of c29eeec (yes)
     {
         // Check if the Escape key is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-<<<<<<< HEAD
-=======
-            // Log when the ESC key is pressed
-            Debug.LogWarning("ESC key pressed");
-
-            // Check if game is already paused
-            if (isPaused)
-            {
-                Debug.LogWarning("Game is paused, trying to unpause");
-            }
-            else
-            {
-                Debug.LogWarning("Game is not paused, trying to pause");
-            }
-
-            // Toggle the pause state when ESC is pressed
->>>>>>> parent of c29eeec (yes)
             TogglePause();
         }
     }
@@ -66,12 +43,8 @@ public class ShowPause : MonoBehaviour
 
     private void PauseGame()
     {
-<<<<<<< HEAD
         FindPausePanel(); // Ensure it's assigned before pausing
 
-=======
-        // Show the pause panel
->>>>>>> parent of c29eeec (yes)
         if (pausePanel != null)
             pausePanel.SetActive(true);
 
@@ -94,7 +67,6 @@ public class ShowPause : MonoBehaviour
         // Set the pause state to false
         isPaused = false;
     }
-<<<<<<< HEAD
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -109,6 +81,3 @@ public class ShowPause : MonoBehaviour
         }
     }
 }
-=======
-}
->>>>>>> parent of c29eeec (yes)
