@@ -1,62 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class LevelFinish : MonoBehaviour
+public class Level1Finish : MonoBehaviour
 {
-    [SerializeField] private GameObject winPanel; // Assign in Inspector or find dynamically
-
+    [SerializeField] private string gameSceneName = "Level2";
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     AudioManager audioManager;
-
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-
-    public void ProceedToNextLevel()
+    public void Proceed2()
     {
-        Debug.Log("Proceed button pressed, loading next level...");
+        Debug.Log("Play button pressed, loading game...");
 
-        // If winPanel is null, try finding it dynamically
-        if (winPanel == null)
+        // Ensure you're not unloading and loading the same scene at the same time
+        if (SceneManager.GetActiveScene().name != "Level2")
         {
-            winPanel = GameObject.FindGameObjectWithTag("WinPanel");
-        }
-
-        // Hide win panel
-        if (winPanel != null)
-        {
-            winPanel.SetActive(false);
-            Debug.Log("Win panel hidden.");
+            SceneManager.LoadSceneAsync("Level2"); // Load the desired scene
         }
         else
         {
-            Debug.LogWarning("Win panel reference is missing or not found!");
+            Debug.LogWarning("Level2 is already active. Skipping reload.");
         }
-
-        // Unpause game if it was paused
-        Time.timeScale = 1f;
-
-        // Determine next level based on the current scene
-        string currentScene = SceneManager.GetActiveScene().name;
-        string nextScene = "";
-
-        if (currentScene == "Level1")
-        {
-            nextScene = "Level2";
-        }
-        else if (currentScene == "Level2")
-        {
-            nextScene = "Level3";
-        }
-        else
-        {
-            Debug.LogWarning("No next level defined for " + currentScene);
-            return; // Stop if there's no next level
-        }
-
-        // Load next level
-        SceneManager.LoadSceneAsync(nextScene);
-        Debug.Log("Loading " + nextScene);
 
         // Play sound effect
         if (audioManager != null)
@@ -64,14 +29,11 @@ public class LevelFinish : MonoBehaviour
             audioManager.PlaySFX(audioManager.menuSFX);
         }
     }
-
     public void Quit()
     {
         Debug.Log("Quit button pressed, exiting application...");
-        if (audioManager != null)
-        {
-            audioManager.PlaySFX(audioManager.menuSFX);
-        }
+        audioManager.PlaySFX(audioManager.menuSFX);
         Application.Quit();
     }
 }
+

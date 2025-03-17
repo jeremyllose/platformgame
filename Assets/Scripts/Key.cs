@@ -2,17 +2,23 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    private GameObject heldKey = null;
+    [SerializeField] private string keyOwner; // Set in Inspector to "Ventus" or "Petra"
 
-    public bool HasKey(GameObject key)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        return heldKey == key;
-    }
+        if (collision.CompareTag(keyOwner))
+        {
+            if (keyOwner == "Ventus")
+            {
+                Finish.VentusGetsKey();
+            }
+            else if (keyOwner == "Petra")
+            {
+                Finish.PetraGetsKey();
+            }
 
-    public void PickupKey(GameObject key)
-    {
-        heldKey = key;
-        key.SetActive(false); // Hide key when picked up
-        Debug.Log(gameObject.name + " picked up " + key.name);
+            Debug.Log(keyOwner + " picked up their key!");
+            Destroy(gameObject); // Remove key after pickup
+        }
     }
 }
