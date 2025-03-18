@@ -66,6 +66,19 @@ public class SceneController : MonoBehaviour
         {
             isGameFrozen = false; // Unfreeze game when in Level1
             UnfreezeGameplay();
+            
+        }
+          else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            isGameFrozen = false; // Unfreeze game when in Level1
+            UnfreezeGameplay();
+            
+        }
+        else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            isGameFrozen = false; // Unfreeze game when in Level1
+            UnfreezeGameplay();
+            
         }
     }
 

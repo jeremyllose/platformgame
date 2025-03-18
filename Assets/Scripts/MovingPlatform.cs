@@ -3,50 +3,54 @@ using System.Collections;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform pointA; // Starting point
-    public Transform pointB; // Destination point
-    public float speed = 2f; // Movement speed
-    public float waitTime = 1f; // Time to wait at each point
+    public Transform pointA;
+    public Transform pointB;
+    public float speed = 2f;
+    public float waitTime = 1f;
 
-    private Vector3 targetPosition; // Current target
-    private bool isWaiting = false; // To prevent moving while waiting
+    private Vector3 targetPosition;
+    private bool isWaiting = false;
+    private Vector3 lastPosition;
+    private Vector3 platformVelocity;
 
     private void Start()
     {
-        targetPosition = pointA.position; // Start moving towards Point A
+        targetPosition = pointA.position;
+        lastPosition = transform.position;
     }
 
     private void Update()
     {
-        if (!isWaiting) // Only move if not waiting
+        if (!isWaiting)
         {
-            // Move platform towards the target position
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-            // Check if the platform reached the target position
             if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
             {
-                StartCoroutine(WaitAndSwitchTarget()); // Wait and switch target
+                StartCoroutine(WaitAndSwitchTarget());
             }
         }
     }
 
     private IEnumerator WaitAndSwitchTarget()
     {
-        isWaiting = true; // Pause movement
-        yield return new WaitForSeconds(waitTime); // Wait for the defined time
-
-        // Switch to the other point
+        isWaiting = true;
+        yield return new WaitForSeconds(waitTime);
         targetPosition = targetPosition == pointA.position ? pointB.position : pointA.position;
+        isWaiting = false;
+    }
 
-        isWaiting = false; // Resume movement
+    private void FixedUpdate()
+    {
+        platformVelocity = (transform.position - lastPosition) / Time.fixedDeltaTime;
+        lastPosition = transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ventus") || collision.collider.CompareTag("Petra"))
         {
-            collision.collider.transform.SetParent(transform); // Parent the player to the platform
+            collision.collider.transform.SetParent(transform); // Set player as child of platform
         }
     }
 
@@ -54,7 +58,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ventus") || collision.collider.CompareTag("Petra"))
         {
-            collision.collider.transform.SetParent(null); // Unparent the player
+            collision.collider.transform.SetParent(null); // Remove player from platform
         }
     }
 }
