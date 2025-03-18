@@ -455,7 +455,6 @@ MonoBehaviour:
   gameSceneName: Level1
   mainMenuPanel: {fileID: 1944728068}
   aboutPanel: {fileID: 782857758}
-<<<<<<< HEAD
 --- !u!1 &674633994
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699597801}
   m_CullTransparentMesh: 1
-=======
->>>>>>> parent of c29eeec (yes)
 --- !u!1 &782857758
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +919,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
-<<<<<<< HEAD
 --- !u!1 &836088464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,8 +1224,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881589121}
   m_CullTransparentMesh: 1
-=======
->>>>>>> parent of c29eeec (yes)
 --- !u!1 &891455841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1357,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
 --- !u!1 &898851031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,8 +1624,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956871273}
   m_CullTransparentMesh: 1
-=======
->>>>>>> parent of c29eeec (yes)
 --- !u!1 &1004291554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2117,7 +2108,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533235885}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1 &1553674786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,8 +2153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e9e03092109824692c325343549112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-=======
->>>>>>> parent of c29eeec (yes)
 --- !u!1 &1593610824
 GameObject:
   m_ObjectHideFlags: 0

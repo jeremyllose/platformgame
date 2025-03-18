@@ -2104,6 +2104,7 @@ GameObject:
   - component: {fileID: 580549699}
   - component: {fileID: 580549698}
   - component: {fileID: 580549700}
+  - component: {fileID: 580549701}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Untagged
@@ -2284,6 +2285,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 100
   losePanel: {fileID: 1090114545}
+--- !u!19719996 &580549701
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580549696}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2665,7 @@ GameObject:
   - component: {fileID: 664669988}
   - component: {fileID: 664669987}
   - component: {fileID: 664669989}
+  - component: {fileID: 664669990}
   m_Layer: 0
   m_Name: Lava2
   m_TagString: Untagged
@@ -2816,6 +2856,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 100
   losePanel: {fileID: 1090114545}
+--- !u!19719996 &664669990
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664669985}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &677776294
 GameObject:
   m_ObjectHideFlags: 0
@@ -14162,6 +14240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655fd95e9b10c2442b2fc23582e00093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyOwner: 
 --- !u!114 &1146626331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29453,7 +29532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1923339741}
         m_TargetAssemblyTypeName: ShowPause, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
@@ -32005,6 +32084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655fd95e9b10c2442b2fc23582e00093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyOwner: 
 --- !u!114 &2093514396
 MonoBehaviour:
   m_ObjectHideFlags: 0
