@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;  // For TextMeshPro
 
+//Edit 1: JEREMY I THINK THIS IS UNUSED REPLACED BY FINISH.CS YES B) Edit 2: NVM used in LosePanel
 public class EndTrigger : MonoBehaviour
 {
     // public string mainMenu = "Main Menu";
@@ -43,9 +44,10 @@ public class EndTrigger : MonoBehaviour
 
     public void Retry()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         audioManager.PlaySFX(audioManager.menuSFX);
-        Time.timeScale = 1;
+
     }
     // public void Menu()
     // {

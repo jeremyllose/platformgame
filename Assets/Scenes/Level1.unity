@@ -2121,7 +2121,7 @@ Transform:
   m_GameObject: {fileID: 580549696}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 0.05, y: 0.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27635,9 +27635,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2091149067}
-        m_TargetAssemblyTypeName: Level1Finish, Assembly-CSharp
-        m_MethodName: Proceed2
+      - m_Target: {fileID: 1794904361}
+        m_TargetAssemblyTypeName: LevelFinish, Assembly-CSharp
+        m_MethodName: ProceedToNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29710,7 +29710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd09d3e7b708c924d882b94c1146c744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Level2
+  nextLevelName: Level2
 --- !u!114 &1794904362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31794,7 +31794,6 @@ GameObject:
   - component: {fileID: 2091149065}
   - component: {fileID: 2091149064}
   - component: {fileID: 2091149066}
-  - component: {fileID: 2091149067}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
@@ -31878,19 +31877,6 @@ MonoBehaviour:
   winText: {fileID: 0}
   retryButton: {fileID: 0}
   menuButton: {fileID: 0}
---- !u!114 &2091149067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091149062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd09d3e7b708c924d882b94c1146c744, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameSceneName: Level2
 --- !u!1 &2093514386
 GameObject:
   m_ObjectHideFlags: 0

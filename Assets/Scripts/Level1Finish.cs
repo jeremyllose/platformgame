@@ -1,39 +1,46 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Level1Finish : MonoBehaviour
+
+public class LevelFinish : MonoBehaviour
 {
-    [SerializeField] private string gameSceneName = "Level2";
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    AudioManager audioManager;
+    [SerializeField] private string nextLevelName; // Assign the next level in the inspector
+    
+    private AudioManager audioManager;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
-    public void Proceed2()
-    {
-        Debug.Log("Play button pressed, loading game...");
 
-        // Ensure you're not unloading and loading the same scene at the same time
-        if (SceneManager.GetActiveScene().name != "Level2")
+    public void ProceedToNextLevel()
+    {
+        Debug.Log("Proceeding to the next level...");
+        
+        // Reset time scale before proceeding
+        Time.timeScale = 1;
+
+        if (!string.IsNullOrEmpty(nextLevelName) && SceneManager.GetActiveScene().name != nextLevelName)
         {
-            SceneManager.LoadSceneAsync("Level2"); // Load the desired scene
+            SceneManager.LoadSceneAsync(nextLevelName);
         }
         else
         {
-            Debug.LogWarning("Level2 is already active. Skipping reload.");
+            Debug.LogWarning("Next level is already active or not set.");
         }
 
-        // Play sound effect
         if (audioManager != null)
         {
             audioManager.PlaySFX(audioManager.menuSFX);
         }
     }
+
     public void Quit()
     {
         Debug.Log("Quit button pressed, exiting application...");
-        audioManager.PlaySFX(audioManager.menuSFX);
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.menuSFX);
+        }
         Application.Quit();
     }
 }
-

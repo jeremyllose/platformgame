@@ -13,7 +13,7 @@ public class Lava : MonoBehaviour
 
             // Get the Health component of the character
             Health health = other.GetComponent<Health>();
-            
+
             if (health != null)
             {
                 health.TakeDamage((int)damageAmount); // Apply damage
@@ -23,7 +23,7 @@ public class Lava : MonoBehaviour
             {
                 Debug.LogWarning(other.name + " has no Health script!");
             }
-            
+
             // If health reaches zero, trigger death
             if (health == null || health.currentHealth <= 0)
             {
@@ -36,6 +36,7 @@ public class Lava : MonoBehaviour
     {
         player.SetActive(false); // Deactivate the character to simulate death
 
+        Time.timeScale = 0;
         if (losePanel != null)
         {
             losePanel.SetActive(true);
