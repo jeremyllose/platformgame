@@ -4,12 +4,11 @@ using TMPro;  // For TextMeshPro
 
 public class MainMenu : MonoBehaviour
 {
-    // Scene name for the game
-    [SerializeField] private string gameSceneName = "Level1";
-
     // References to UI elements
     [SerializeField] private GameObject mainMenuPanel; // Main menu UI
     [SerializeField] private GameObject aboutPanel;    // About UI
+    [SerializeField] private GameObject creditsPanel;  // Credits UI
+    [SerializeField] private GameObject levelSelectPanel; // Level selection UI
 
     AudioManager audioManager;
 
@@ -17,6 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
+
     private void Start()
     {
         // Initially show only the main menu
@@ -25,21 +25,24 @@ public class MainMenu : MonoBehaviour
 
         if (aboutPanel != null)
             aboutPanel.SetActive(false);
+
+        if (creditsPanel != null)
+            creditsPanel.SetActive(false);
+
+        if (levelSelectPanel != null)
+            levelSelectPanel.SetActive(false);
     }
 
     public void Play()
     {
-        Debug.Log("Play button pressed, loading game...");
+        Debug.Log("Play button pressed, opening level selection...");
 
-        // Ensure you're not unloading and loading the same scene at the same time
-        if (SceneManager.GetActiveScene().name != "Level1")
-        {
-            SceneManager.LoadSceneAsync("Level1"); // Load the desired scene
-        }
-        else
-        {
-            Debug.LogWarning("Level1 is already active. Skipping reload.");
-        }
+        // Hide the main menu and show level selection
+        if (mainMenuPanel != null)
+            mainMenuPanel.SetActive(false);
+
+        if (levelSelectPanel != null)
+            levelSelectPanel.SetActive(true);
 
         // Play sound effect
         if (audioManager != null)
@@ -47,16 +50,39 @@ public class MainMenu : MonoBehaviour
             audioManager.PlaySFX(audioManager.menuSFX);
         }
     }
+    public void LoadLevel(string levelName)
+{
+    Debug.Log("Loading " + levelName);
+    SceneManager.LoadSceneAsync(levelName);
+}
+    public void LoadLevel1() { LoadLevel("Level1"); }
+    public void LoadLevel2() { LoadLevel("Level2"); }
+    public void LoadLevel3() { LoadLevel("Level3"); }
+    public void LoadLevel4() { LoadLevel("Level4"); }
+
     public void ShowAbout()
     {
         Debug.LogWarning("About button pressed, showing about panel...");
 
-        // Hide the main menu and show the about panel
         if (mainMenuPanel != null)
             mainMenuPanel.SetActive(false);
 
         if (aboutPanel != null)
             aboutPanel.SetActive(true);
+
+        audioManager.PlaySFX(audioManager.menuSFX);
+    }
+
+    public void ShowCredits()
+    {
+        Debug.LogWarning("Credits button pressed, showing credits panel...");
+
+        if (mainMenuPanel != null)
+            mainMenuPanel.SetActive(false);
+
+        if (creditsPanel != null)
+            creditsPanel.SetActive(true);
+
         audioManager.PlaySFX(audioManager.menuSFX);
     }
 
@@ -64,12 +90,18 @@ public class MainMenu : MonoBehaviour
     {
         Debug.LogWarning("Back button pressed, returning to main menu...");
 
-        // Hide the about panel and show the main menu
         if (aboutPanel != null)
             aboutPanel.SetActive(false);
 
+        if (creditsPanel != null)
+            creditsPanel.SetActive(false);
+
+        if (levelSelectPanel != null)
+            levelSelectPanel.SetActive(false);
+
         if (mainMenuPanel != null)
             mainMenuPanel.SetActive(true);
+
         audioManager.PlaySFX(audioManager.menuSFX);
     }
 

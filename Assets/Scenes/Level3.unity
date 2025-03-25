@@ -5583,10 +5583,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 772362595}
-  - {fileID: 478970054}
   - {fileID: 129654060}
   - {fileID: 1582535856}
+  - {fileID: 772362595}
+  - {fileID: 478970054}
   - {fileID: 1533943845}
   - {fileID: 1902447296}
   - {fileID: 1597082652}
@@ -7045,7 +7045,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
@@ -28354,7 +28354,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
@@ -33492,7 +33492,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
@@ -33799,7 +33799,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
@@ -33969,7 +33969,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
@@ -34139,7 +34139,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
@@ -43878,7 +43878,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.2699741, y: 0.080991924}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03125, y: 1.09375, z: 1.140625, w: 0.828125}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
     newSize: {x: 2.56, y: 2.56}
